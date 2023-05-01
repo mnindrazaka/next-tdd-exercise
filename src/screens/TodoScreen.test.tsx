@@ -9,15 +9,15 @@ it("can add new todos and remove it", async () => {
   await user.type(screen.getByRole("textbox", { name: "todo" }), "eat");
 
   await user.click(screen.getByRole("button", { name: "submit" }));
-  expect(await screen.findByText("eat")).toBeInTheDocument();
+  expect(screen.getByText("eat")).toBeInTheDocument();
 
   await user.type(screen.getByRole("textbox", { name: "todo" }), "sleep");
   await user.click(screen.getByRole("button", { name: "submit" }));
-  expect(await screen.findByText("sleep")).toBeInTheDocument();
+  expect(screen.getByText("sleep")).toBeInTheDocument();
 
   await user.type(screen.getByRole("textbox", { name: "todo" }), "code");
   await user.click(screen.getByRole("button", { name: "submit" }));
-  expect(await screen.findByText("code")).toBeInTheDocument();
+  expect(screen.getByText("code")).toBeInTheDocument();
 
   await user.click(screen.getAllByRole("button", { name: "remove" })[0]);
   expect(screen.queryByText("eat")).not.toBeInTheDocument();
